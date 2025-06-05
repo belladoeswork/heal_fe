@@ -53,8 +53,24 @@ const config: Configuration = {
     path: path.resolve(process.cwd(), "public/assets"),
     publicPath: "/assets/",
   },
-  optimization: { minimizer: [new CssMinimizerPlugin()] },
+  optimization: {
+    minimizer: [new CssMinimizerPlugin()],
+    splitChunks: {
+      chunks: "all",
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all",
+        },
+      },
+    },
+  },
   plugins: getPlugins(),
+  performance: {
+    maxAssetSize: 512000, // 500 KiB
+    maxEntrypointSize: 512000, // 500 KiB
+  },
 };
 
 export default merge(baseConfig(true), config);
