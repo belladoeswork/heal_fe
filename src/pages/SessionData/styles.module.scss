@@ -1,0 +1,992 @@
+.sessionData {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 100%;
+  padding: 24px;
+  width: 100%;
+}
+
+.header {
+  margin-bottom: 32px;
+
+  h1 {
+    color: #212529;
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+
+  p {
+    color: #6c757d;
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+/* Centered Content Container */
+.centeredContent {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1400px;
+  width: 100%;
+}
+
+/* Tabs */
+.tabs {
+  border-bottom: 2px solid #e9ecef;
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: #6c757d;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 24px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #f8f9fa;
+    color: #495057;
+  }
+
+  &.active {
+    background-color: #e3f2fd;
+    border-bottom-color: #1976d2;
+    color: #1976d2;
+  }
+}
+
+/* Tab Content */
+.tabContent {
+  text-align: center;
+  width: 100%;
+
+  h3 {
+    color: #212529;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 16px;
+  }
+
+  p {
+    color: #6c757d;
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+.mainGrid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Patient Card */
+.patientCard {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 24px;
+  width: 100%;
+}
+
+.patientHeader {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.avatar {
+  align-items: center;
+  background: #f59e0b;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+  height: 60px;
+  justify-content: center;
+  width: 60px;
+}
+
+.patientInfo {
+  flex: 1;
+
+  h2 {
+    color: #212529;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+}
+
+.patientMeta {
+  align-items: center;
+  color: #6c757d;
+  display: flex;
+  font-size: 14px;
+  gap: 12px;
+
+  .diagnosis {
+    background: #e3f2fd;
+    border-radius: 12px;
+    color: #1976d2;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 2px 8px;
+  }
+}
+
+.sessionDetails {
+  margin-bottom: 24px;
+}
+
+.detailRow {
+  align-items: center;
+  border-bottom: 1px solid #f1f3f4;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.label {
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.value {
+  color: #212529;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.treatmentFocus {
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  padding: 16px;
+
+  h3 {
+    color: #212529;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+
+  p {
+    color: #495057;
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0 0 12px;
+  }
+}
+
+.sessionInfo {
+  color: #6c757d;
+  font-size: 12px;
+}
+
+.sessionControls {
+  display: flex;
+  gap: 12px;
+}
+
+.controlButton {
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 16px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+  }
+}
+
+.pauseButton {
+  background: #f3f4f6;
+  color: #374151;
+
+  &:hover {
+    background: #e5e7eb;
+  }
+
+  &.resumed {
+    background: #10b981;
+    color: white;
+
+    &:hover {
+      background: #059669;
+    }
+  }
+}
+
+.endButton {
+  background: #fef2f2;
+  color: #dc2626;
+
+  &:hover {
+    background: #fee2e2;
+  }
+}
+
+.sessionEndedMessage {
+  padding: 40px 20px;
+  text-align: center;
+
+  h3 {
+    color: #212529;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+
+  p {
+    color: #6c757d;
+    font-size: 14px;
+    margin: 0 0 20px;
+  }
+}
+
+.restartButton {
+  background: #1976d2;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 24px;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: #1565c0;
+  }
+}
+
+/* Live Session Container - Updated for horizontal layout */
+.liveSessionContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1400px;
+  width: 100%;
+}
+
+.cardRow {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 32px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 400px;
+  width: 45%;
+}
+
+.rightColumn {
+  min-width: 450px;
+  width: 45%;
+}
+
+/* Live Biometric Card */
+.liveBiometricCard {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  width: 100%;
+}
+
+.biometricHeader {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.biometricTitle {
+  h3 {
+    color: #212529;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+
+  .sessionInfo {
+    color: #6c757d;
+    font-size: 12px;
+  }
+}
+
+.biometricStatus {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: right;
+}
+
+.durationDisplay {
+  color: #212529;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.liveIndicator {
+  align-items: center;
+  display: flex;
+  gap: 6px;
+}
+
+.liveDot {
+  background: #6c757d;
+  border-radius: 50%;
+  height: 8px;
+  width: 8px;
+
+  &.active {
+    animation: pulse 2s infinite;
+    background: #10b981;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.liveText {
+  color: #10b981;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.statusZones {
+  margin-bottom: 24px;
+
+  h4 {
+    color: #212529;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 12px;
+  }
+}
+
+.statusZoneItems {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.statusZone {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+
+  span {
+    color: #6c757d;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+  }
+}
+
+.statusDot {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+
+  &.optimal {
+    background: #10b981;
+  }
+
+  &.warning {
+    background: #f59e0b;
+  }
+
+  &.critical {
+    background: #ef4444;
+  }
+}
+
+.biometricMetrics {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 24px;
+}
+
+.biometricMetric {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.metricHeader {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.metricTitle {
+  color: #495057;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.metricStatus {
+  border-radius: 50%;
+  height: 12px;
+  width: 12px;
+}
+
+.metricValue {
+  margin-bottom: 8px;
+
+  .value {
+    color: #212529;
+    font-size: 24px;
+    font-weight: 700;
+    margin-right: 4px;
+  }
+
+  .unit {
+    color: #6c757d;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+.metricOptimal {
+  color: #6c757d;
+  font-size: 12px;
+}
+
+.hrvAnalysis {
+  h4 {
+    color: #212529;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 16px;
+  }
+}
+
+.analysisHeader {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.analysisTabs {
+  display: flex;
+  gap: 4px;
+}
+
+.analysisTab {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  color: #6c757d;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 16px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #e9ecef;
+  }
+
+  &.active {
+    background: #8b5cf6;
+    border-color: #8b5cf6;
+    color: white;
+  }
+}
+
+.hrvChart {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.chartContainer {
+  width: 100%;
+}
+
+.chartLine {
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.chartAxis {
+  color: #6c757d;
+  display: flex;
+  font-size: 11px;
+  justify-content: space-between;
+}
+
+/* Emotion Trend Card */
+.emotionTrendCard {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 24px;
+  width: 100%;
+
+  h3 {
+    color: #212529;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 20px;
+  }
+}
+
+.emotionHighlights {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.emotionHighlight {
+  align-items: center;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: #e9ecef;
+  }
+}
+
+.emotionEmoji {
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+.emotionText {
+  color: #495057;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.sessionStatus {
+  text-align: right;
+
+  .statusLive {
+    color: #10b981;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  p {
+    color: #6c757d;
+    font-size: 12px;
+    margin: 4px 0 0;
+  }
+}
+
+.patientVitals {
+  border-top: 1px solid #e9ecef;
+  display: flex;
+  gap: 24px;
+  padding-top: 20px;
+}
+
+.vital {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  .vitalValue {
+    color: #212529;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .vitalLabel {
+    color: #6c757d;
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
+
+/* Biometric Card */
+.biometricCard {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  min-width: 0; /* Prevent overflow */
+  padding: 24px;
+  width: 100%;
+
+  h3 {
+    color: #212529;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 20px;
+  }
+}
+
+.biometricGrid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.biometricSubcard {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.biometricHeader {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+
+  .biometricIcon {
+    font-size: 16px;
+  }
+
+  h4 {
+    color: #495057;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+.biometricValue {
+  margin-bottom: 8px;
+
+  .primaryValue {
+    color: #212529;
+    font-size: 24px;
+    font-weight: 700;
+    margin-right: 4px;
+  }
+
+  .unit {
+    color: #6c757d;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+.biometricTrend {
+  font-size: 12px;
+
+  .trendUp {
+    color: #dc3545;
+  }
+
+  .trendDown {
+    color: #10b981;
+  }
+
+  .trendStable {
+    color: #6c757d;
+  }
+}
+
+/* Emotion Card */
+.emotionCard {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  min-width: 0; /* Prevent overflow */
+  padding: 24px;
+  width: 100%;
+
+  h3 {
+    color: #212529;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 20px;
+  }
+}
+
+.emotionData {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.emotionChart {
+  align-items: center;
+  background: #f8f9fa;
+  border: 2px dashed #dee2e6;
+  border-radius: 8px;
+  display: flex;
+  height: 120px;
+  justify-content: center;
+}
+
+.chartPlaceholder {
+  color: #6c757d;
+  font-size: 14px;
+  text-align: center;
+}
+
+.emotionMetrics {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.emotionMetric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.emotionBar {
+  background: #e9ecef;
+  border-radius: 4px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.emotionProgress {
+  border-radius: 4px;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.emotionLabel {
+  align-items: center;
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+
+  span:first-child {
+    color: #495057;
+    font-weight: 500;
+  }
+
+  span:last-child {
+    color: #6c757d;
+    font-weight: 600;
+  }
+}
+
+/* Coming Soon */
+.comingSoon {
+  align-items: center;
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 20px;
+
+  h3 {
+    color: #212529;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 12px;
+  }
+
+  p {
+    color: #6c757d;
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .cardRow {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .leftColumn,
+  .rightColumn {
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .liveBiometricCard,
+  .patientCard,
+  .emotionTrendCard {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .patientCard {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  .biometricCard {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+
+  .emotionCard {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+  }
+
+  .biometricMetrics {
+    grid-template-columns: 1fr;
+  }
+
+  .analysisHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sessionData {
+    padding: 16px;
+  }
+
+  .tabs {
+    border-bottom: none;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .tab {
+    border-bottom: 1px solid #e9ecef;
+    border-radius: 0;
+
+    &.active {
+      border-bottom-color: #1976d2;
+    }
+  }
+
+  .patientHeader {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .sessionStatus {
+    text-align: center;
+  }
+
+  .patientVitals {
+    justify-content: space-around;
+  }
+
+  .biometricGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .emotionData {
+    gap: 16px;
+  }
+
+  .centeredContent {
+    max-width: 100%;
+  }
+}
+
+/* Legacy card styles for backward compatibility */
+.content {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.card {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+
+  h3 {
+    color: #212529;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 12px;
+  }
+
+  p {
+    color: #6c757d;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+  }
+}

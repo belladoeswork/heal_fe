@@ -1,5 +1,5 @@
 import path from "path";
-import webpack, { Configuration } from "webpack";
+import webpack, { Configuration, WebpackPluginInstance } from "webpack";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
@@ -9,8 +9,8 @@ import merge from "webpack-merge";
 
 import baseConfig, { isDev } from "./base.config";
 
-const getPlugins = () => {
-  let plugins = [
+const getPlugins = (): WebpackPluginInstance[] => {
+  let plugins: WebpackPluginInstance[] = [
     new MiniCssExtractPlugin({
       // Don't use hash in development, we need the persistent for "renderHtml.ts"
       filename: isDev ? "[name].css" : "[name].[contenthash].css",

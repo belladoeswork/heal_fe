@@ -10,6 +10,7 @@ export default (app: Express): void => {
   const instance = require("webpack-dev-middleware")(compiler, {
     headers: { "Access-Control-Allow-Origin": "*" },
     serverSideRender: true,
+    writeToDisk: false,
   });
 
   app.use(instance);

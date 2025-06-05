@@ -1,0 +1,20 @@
+.dashboardLayout {
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+.mainContent {
+  margin-top: 84px; /* Account for top navbar height */
+  min-height: calc(100vh - 84px);
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    margin-top: 64px; /* Mobile navbar height */
+    min-height: calc(100vh - 64px);
+    padding: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.75rem;
+  }
+}

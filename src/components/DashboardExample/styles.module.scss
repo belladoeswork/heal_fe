@@ -1,0 +1,183 @@
+.dashboard {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.header {
+  margin-bottom: 2rem;
+
+  h1 {
+    color: #1f2937;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+  }
+
+  p {
+    color: #6b7280;
+    font-size: 1rem;
+    margin: 0;
+  }
+}
+
+.statsGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-bottom: 2rem;
+}
+
+.statCard {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+
+  h3 {
+    color: #6b7280;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.75rem;
+    text-transform: uppercase;
+  }
+}
+
+.statNumber {
+  color: #1f2937;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0 0 0.25rem;
+}
+
+.statLabel {
+  color: #10b981;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.content {
+  display: grid;
+  gap: 2rem;
+}
+
+.recentSessions {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+  h2 {
+    color: #1f2937;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 1.5rem 1.5rem 0;
+  }
+}
+
+.sessionsList {
+  padding: 1rem 0;
+}
+
+.sessionItem {
+  align-items: center;
+  border-bottom: 1px solid #f3f4f6;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: #f9fafb;
+  }
+}
+
+.sessionInfo {
+  h4 {
+    color: #1f2937;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+  }
+
+  p {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin: 0;
+  }
+}
+
+.sessionStatus {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.statusCompleted {
+  background-color: #d1fae5;
+  border-radius: 9999px;
+  color: #065f46;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+}
+
+.statusInProgress {
+  background-color: #fef3c7;
+  border-radius: 9999px;
+  color: #92400e;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+}
+
+.statusScheduled {
+  background-color: #dbeafe;
+  border-radius: 9999px;
+  color: #1e40af;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+}
+
+.sessionTime {
+  color: #6b7280;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .statsGrid {
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    margin-bottom: 1.5rem;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .sessionItem {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .sessionStatus {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+}

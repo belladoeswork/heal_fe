@@ -1,3 +1,6 @@
 {
-  "watch": ["src/server", "webpack", "babel.config.js"]
+  "watch": ["src", "webpack", "babel.config.js"],
+  "ignore": ["node_modules", "public", "coverage", ".git", "*.log"],
+  "ext": "js,mjs,json,ts,tsx,scss",
+  "exec": "yarn dev:build && node ./public/server"
 }

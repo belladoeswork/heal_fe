@@ -1,0 +1,95 @@
+.sidebar {
+  background-color: #f8f9fa;
+  border-right: 1px solid #e9ecef;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full height */
+  left: 0;
+  position: fixed;
+  top: 0; /* Start from top */
+  width: 250px;
+  z-index: 1000;
+}
+
+.header {
+  border-bottom: 1px solid #e9ecef;
+  padding: 24px 20px;
+}
+
+.logo {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.logoIcon {
+  border-radius: 50%;
+  height: 36px;
+  object-fit: cover;
+  width: 36px;
+}
+
+.brandName {
+  color: #212529;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.navigation {
+  flex: 1;
+  padding: 20px 0;
+}
+
+.navItem {
+  align-items: center;
+  border-left: 3px solid transparent;
+  color: #6c757d;
+  display: flex;
+  gap: 12px;
+  padding: 12px 20px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #e9ecef;
+    color: #495057;
+  }
+
+  &.active {
+    background-color: #e3f2fd;
+    border-left-color: #1976d2;
+    color: #1976d2;
+  }
+}
+
+.navIcon {
+  font-size: 18px;
+  text-align: center;
+  width: 24px;
+}
+
+.navLabel {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+
+    .brandName,
+    .navLabel {
+      display: none;
+    }
+
+    .logo {
+      justify-content: center;
+    }
+
+    .navItem {
+      justify-content: center;
+      padding: 12px 0;
+    }
+  }
+}

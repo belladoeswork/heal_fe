@@ -23,6 +23,7 @@ const getStyleLoaders = (isWeb: boolean, isSass?: boolean) => {
           auto: true,
           localIdentName: isDev ? "[path][name]__[local]" : "[hash:base64]",
           exportOnlyLocals: !isWeb,
+          namedExport: false,
         },
       },
     },
@@ -60,8 +61,11 @@ const getPlugins = (isWeb: boolean) => {
       ...plugins,
       // Runs TypeScript type checker on a separate process
       new ForkTsCheckerWebpackPlugin({
-        // (Required) Same as eslint command
-        eslint: { files: "./src/**/*.{js,jsx,ts,tsx}" },
+        typescript: {
+          configFile: path.resolve(process.cwd(), "tsconfig.json"),
+        },
+        async: isDev,
+        logger: "webpack-infrastructure",
       }),
     ];
 
@@ -83,6 +87,13 @@ const config = (isWeb = false): Configuration => ({
   stats: "minimal",
   context: path.resolve(process.cwd()),
   output: { clean: true },
+  watchOptions: isDev
+    ? {
+        ignored: "**/node_modules/**",
+        aggregateTimeout: 300,
+        poll: false,
+      }
+    : undefined,
   optimization: {
     minimizer: [
       new TerserPlugin({
