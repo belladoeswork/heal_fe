@@ -25,7 +25,7 @@ export const getUserList = async (): Promise<UserList> => {
     const { data } = await axios.get(`${config.API_URL}/users`);
     return { data };
   } catch (error) {
-    return { error };
+    return { error: error as Error };
   }
 };
 
@@ -34,6 +34,6 @@ export const getUserData = async (id: string): Promise<UserData> => {
     const { data } = await axios.get(`${config.API_URL}/users/${id}`);
     return { data };
   } catch (error) {
-    return { error };
+    return { error: error as Error };
   }
 };
