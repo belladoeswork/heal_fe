@@ -2,10 +2,14 @@
   "version": 2,
   "buildCommand": "npm run vercel-build",
   "outputDirectory": "public",
-  "functions": [
+  "builds": [
     {
       "src": "api/index.ts",
       "use": "@vercel/node"
+    },
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
