@@ -24,7 +24,7 @@ const createStore = ({ initialState, url }: Arg = {}) => {
       ...getDefaultMiddleware(),
       routerMiddleware(history),
     ],
-    devTools: __DEV__,
+    devTools: process.env.NODE_ENV === "development",
   });
 
   return { store, history };

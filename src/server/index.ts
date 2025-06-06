@@ -26,7 +26,7 @@ app.use(favicon(path.resolve(process.cwd(), "public/favicon.ico")));
 app.use(express.static(path.resolve(process.cwd(), "public")));
 
 // Enable dev-server in development
-if (__DEV__) devServer(app);
+if (process.env.NODE_ENV === "development") devServer(app);
 
 // Use React server-side rendering middleware
 app.get("*", ssr);

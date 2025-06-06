@@ -59,5 +59,7 @@ export default (
   };
 
   // Minify HTML in production
-  return __DEV__ ? html : minify(html, minifyConfig);
+  return process.env.NODE_ENV === "development"
+    ? html
+    : minify(html, minifyConfig);
 };
