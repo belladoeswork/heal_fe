@@ -1,10 +1,33 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
+import * as fs from "fs";
+import * as path from "path";
 
 export default async (
-  req: VercelRequest,
+  _req: VercelRequest,
   res: VercelResponse
 ): Promise<void> => {
   try {
+    // Read the webpack assets to get the correct hashed filenames
+    let mainCss = "/assets/main.css";
+    let mainJs = "/assets/main.js";
+    let vendorsJs = "/assets/vendors.js";
+
+    try {
+      const assetsPath = path.join(
+        process.cwd(),
+        "public",
+        "webpack-assets.json"
+      );
+      if (fs.existsSync(assetsPath)) {
+        const assets = JSON.parse(fs.readFileSync(assetsPath, "utf-8"));
+        mainCss = assets["main.css"] || mainCss;
+        mainJs = assets["main.js"] || mainJs;
+        vendorsJs = assets["vendors.js"] || vendorsJs;
+      }
+    } catch (assetsError) {
+      console.warn("Could not read webpack-assets.json:", assetsError);
+    }
+
     // Serve the main React application HTML
     const html = `
       <!DOCTYPE html>
@@ -19,7 +42,7 @@ export default async (
           <link rel="manifest" href="/manifest.json" />
           
           <!-- Load bundled CSS -->
-          <link rel="stylesheet" href="/assets/main.css" />
+          <link rel="stylesheet" href="${mainCss}" />
         </head>
         <body>
           <div id="react-view">
@@ -58,7 +81,8 @@ export default async (
           <script>
             window.__INITIAL_STATE__ = {};
           </script>
-          <script src="/assets/main.js"></script>
+          <script src="${vendorsJs}"></script>
+          <script src="${mainJs}"></script>
         </body>
       </html>
     `;
