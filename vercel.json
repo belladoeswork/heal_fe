@@ -2,38 +2,15 @@
   "version": 2,
   "buildCommand": "npm run vercel-build",
   "outputDirectory": "public",
-  "builds": [
-    {
-      "src": "api/index.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": "public/**"
-      }
-    },
-    {
-      "src": "public/**/*",
-      "use": "@vercel/static"
-    }
-  ],
   "routes": [
-    {
-      "src": "/assets/(.*)",
-      "dest": "/public/assets/$1",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      }
-    },
-    {
-      "src": "/webpack-assets.json",
-      "dest": "/public/webpack-assets.json"
-    },
-    {
-      "src": "/(favicon.ico|heilu.png|manifest.json)",
-      "dest": "/public/$1"
-    },
     {
       "src": "/(.*)",
       "dest": "/api/index.ts"
     }
-  ]
+  ],
+  "functions": {
+    "api/index.ts": {
+      "includeFiles": "public/**"
+    }
+  }
 }

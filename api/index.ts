@@ -3,10 +3,41 @@ import * as fs from "fs";
 import * as path from "path";
 
 export default async (
-  _req: VercelRequest,
+  req: VercelRequest,
   res: VercelResponse
 ): Promise<void> => {
   try {
+    // Handle static asset requests
+    if (
+      req.url?.startsWith("/assets/") ||
+      req.url?.includes(".js") ||
+      req.url?.includes(".css") ||
+      req.url?.includes(".json")
+    ) {
+      const filePath = req.url.startsWith("/") ? req.url.slice(1) : req.url;
+      const fullPath = path.join(process.cwd(), "public", filePath);
+
+      if (fs.existsSync(fullPath)) {
+        const content = fs.readFileSync(fullPath);
+
+        // Set appropriate content type
+        if (filePath.endsWith(".js")) {
+          res.setHeader("Content-Type", "application/javascript");
+        } else if (filePath.endsWith(".css")) {
+          res.setHeader("Content-Type", "text/css");
+        } else if (filePath.endsWith(".json")) {
+          res.setHeader("Content-Type", "application/json");
+        }
+
+        res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+        res.status(200).send(content);
+        return;
+      } 
+        console.warn("Static file not found:", fullPath);
+        res.status(404).json({ error: "File not found", path: filePath });
+        return;
+      
+    }
     // Read the webpack assets to get the correct hashed filenames
     let mainCss = "/assets/main.css";
     let mainJs = "/assets/main.js";
