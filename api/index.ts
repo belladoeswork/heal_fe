@@ -23,6 +23,37 @@ export default async (
         mainCss = assets["main.css"] || mainCss;
         mainJs = assets["main.js"] || mainJs;
         vendorsJs = assets["vendors.js"] || vendorsJs;
+        console.log("Loaded assets:", { mainCss, mainJs, vendorsJs });
+      } else {
+        console.warn("webpack-assets.json not found at:", assetsPath);
+        // Fallback: try to find files in the assets directory
+        try {
+          const assetsDir = path.join(process.cwd(), "public", "assets");
+          if (fs.existsSync(assetsDir)) {
+            const files = fs.readdirSync(assetsDir);
+            const mainCssFile = files.find(
+              (f) => f.startsWith("main.") && f.endsWith(".css")
+            );
+            const mainJsFile = files.find(
+              (f) => f.startsWith("main.") && f.endsWith(".js")
+            );
+            const vendorsJsFile = files.find(
+              (f) => f.startsWith("vendors.") && f.endsWith(".js")
+            );
+
+            if (mainCssFile) mainCss = `/assets/${mainCssFile}`;
+            if (mainJsFile) mainJs = `/assets/${mainJsFile}`;
+            if (vendorsJsFile) vendorsJs = `/assets/${vendorsJsFile}`;
+
+            console.log("Using fallback assets:", {
+              mainCss,
+              mainJs,
+              vendorsJs,
+            });
+          }
+        } catch (fallbackError) {
+          console.warn("Fallback asset detection failed:", fallbackError);
+        }
       }
     } catch (assetsError) {
       console.warn("Could not read webpack-assets.json:", assetsError);
@@ -80,9 +111,14 @@ export default async (
           <!-- Load bundled JavaScript -->
           <script>
             window.__INITIAL_STATE__ = {};
+            console.log("Loading assets:", {
+              css: "${mainCss}",
+              vendors: "${vendorsJs}",
+              main: "${mainJs}"
+            });
           </script>
-          <script src="${vendorsJs}"></script>
-          <script src="${mainJs}"></script>
+          <script src="${vendorsJs}" onerror="console.error('Failed to load vendors.js')"></script>
+          <script src="${mainJs}" onerror="console.error('Failed to load main.js')"></script>
         </body>
       </html>
     `;
